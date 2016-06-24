@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { DrawerComponent } from '../drawer/drawer.component';
 
 @Component({
-  directives: [HeaderComponent, DrawerComponent],
+  directives: [],
   moduleId: module.id,
   selector: 'dashboard',
   styles: [require('./dashboard.component.css')],
