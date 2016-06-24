@@ -15,7 +15,7 @@ var webpackConfig = {
 
   output: {
     path: './dist',
-    publicPath: 'http://localhost:8080/'
+    publicPath: 'http://localhost:5000/'
   },
 
   plugins: [],

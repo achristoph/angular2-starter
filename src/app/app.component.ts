@@ -5,11 +5,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {Constant} from './services/constant';
-import { SensorService } from './services/sensors.service';
+
 @Component({
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, DrawerComponent, HeaderComponent],
   pipes: [],
-  providers: [Constant, SensorService],
+  providers: [Constant],
   selector: 'app',
   template: require('./app.component.html'),
 })
