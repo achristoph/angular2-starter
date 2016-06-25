@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DrawerComponent implements OnInit {
+  logo: string = require('images/angular.png');
+
   constructor() {
     //
   }

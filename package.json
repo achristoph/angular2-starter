@@ -9,7 +9,8 @@
     "start": "node_modules/.bin/webpack-dev-server --inline --colors --progress --display-error-details --display-cached",
     "server": "npm run build && node_modules/.bin/http-server ./dist",
     "test": "karma start --no-single-run --auto-watch",
-    "doc": "node_modules/.bin/typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/"
+    "doc": "node_modules/.bin/typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "heroku": "cp -R dist/ ~/Documents/projects/uipg/public"
   },
   "devDependencies": {
     "codelyzer": "0.0.19",
@@ -44,6 +45,7 @@
     "typedoc": "^0.4.4",
     "typescript": "^1.8.10",
     "typings": "^0.7.9",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
     "webpack-merge": "^0.8.4"

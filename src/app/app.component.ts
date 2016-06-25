@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {Constant} from './services/constant';
+
 @Component({
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, DrawerComponent, HeaderComponent],
   pipes: [],
