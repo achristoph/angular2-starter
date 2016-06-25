@@ -15,7 +15,7 @@ var webpackConfig = {
 
   output: {
     path: './dist',
-    publicPath: 'http://localhost:5000/'
+    // publicPath: '/'
   },
 
   plugins: [],
@@ -32,10 +32,8 @@ var webpackConfig = {
       { test: /\.ts$/, loader: 'ts' },
       { test: /\.html$/, loader: 'html' },
       { test: /\.css$/, loader: 'raw' },
-      {
-        test: /\.(jpg|png)$/,
-        loader: 'file?name=[path][name].[hash].[ext]'
-      }
+      // { test: /\.(png|jpg)$/, loader: "url-loader?limit=50000&name=[path][name].[ext]" }
+      { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[ext]' }
     ],
     postLoaders: []
   },

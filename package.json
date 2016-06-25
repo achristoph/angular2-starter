@@ -45,6 +45,7 @@
     "typedoc": "^0.4.4",
     "typescript": "^1.8.10",
     "typings": "^0.7.9",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
     "webpack-merge": "^0.8.4"
