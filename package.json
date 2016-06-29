@@ -1,9 +1,10 @@
 {
-  "name": "alpha",
+  "name": "angular2starter",
   "version": "1.0.0",
-  "description": "Alpha",
+  "description": "Angular2 Starter",
   "scripts": {
-    "typings": "./node_modules/.bin/typings install",
+    "global": "npm i -g typings karma",
+    "typings": "typings install",
     "build": "node_modules/.bin/rimraf dist && node_modules/.bin/webpack --inline --colors --progress --display-error-details --display-cached",
     "watch": "npm run build -- --watch",
     "start": "node_modules/.bin/webpack-dev-server --inline --colors --progress --display-error-details --display-cached",
