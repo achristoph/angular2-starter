@@ -1,2 +1,2 @@
 # angular2-starter
-A Quick start Angular2 Application using Webpack
+A quickstart of Angular2 application using Webpack
