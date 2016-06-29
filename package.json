@@ -13,6 +13,7 @@
     "doc": "node_modules/.bin/typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/"
   },
   "devDependencies": {
+    "a2-in-memory-web-api": "^0.1.17",
     "codelyzer": "0.0.19",
     "copy": "^0.2.0",
     "copy-webpack-plugin": "^1.1.1",
