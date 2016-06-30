@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
-import {CORE_DIRECTIVES} from '@angular/common';
 import {Constant} from './services/constant';
 
 @Component({

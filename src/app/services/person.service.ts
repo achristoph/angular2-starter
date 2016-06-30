@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 export interface IPerson {
   Id: number;
@@ -19,7 +17,7 @@ export class PersonService {
   }
 
   getPeople(): Observable<any> {
-    return this._http.get('/people.json')
+    return this._http.get('app/people')
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }
