@@ -3,7 +3,6 @@ import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  moduleId: module.id,
   selector: 'app-header',
   styles: [require('./header.component.css')],
   template: require('./header.component.html'),
