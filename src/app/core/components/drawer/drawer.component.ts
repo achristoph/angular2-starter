@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-drawer',
-  styles: ['./drawer.component.css'],
-  template: './drawer.component.html',
+  styleUrls: ['./drawer.component.css'],
+  templateUrl: './drawer.component.html',
 })
 
 export class DrawerComponent implements OnInit {
-  logo: string = 'images/angular.png';
+  logo: string = 'img/angular.png';
 
   constructor() {
     //

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app/app.component';
 import { CoreModule } from './app/core/core.module';
 import { ProjectModule } from './app/project/project.module';
+import './public/css/styles.css';
 // import { routing, appRoutingProviders } from './app.routing';
 
 @NgModule({
