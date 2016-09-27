@@ -11,7 +11,6 @@ require('zone.js/dist/jasmine-patch');
 require('zone.js/dist/async-test');
 require('zone.js/dist/fake-async-test');
 
-
 var appContext = require.context('../src', true, /\.spec\.ts/);
 
 // get all the files, for each file, call the context function
@@ -19,9 +18,6 @@ var appContext = require.context('../src', true, /\.spec\.ts/);
 // loop and require those spec files here
 appContext.keys().forEach(appContext);
 
-// Select BrowserDomAdapter.
-// see https://github.com/AngularClass/angular2-webpack-starter/issues/124
-// Somewhere in the test setup
 var testing = require('@angular/core/testing');
 var browser = require('@angular/platform-browser-dynamic/testing');
 
