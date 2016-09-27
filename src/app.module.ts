@@ -1,15 +1,16 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app/app.component';
-import { DashboardComponent }  from './app/components/dashboard/dashboard.component';
-import { routing, appRoutingProviders } from './app.routing';
+import { CoreModule } from './app/core/core.module';
+import { ProjectModule } from './app/project/project.module';
+// import { routing, appRoutingProviders } from './app.routing';
 
 @NgModule({
   bootstrap: [AppComponent],
-  declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, routing],
-  providers: [
-    appRoutingProviders,
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, CoreModule, ProjectModule], // routing],
+  // providers: [
+  //   appRoutingProviders,
+  // ],
 })
 export class AppModule { }

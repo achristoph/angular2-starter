@@ -1,0 +1,13 @@
+<div class="list">
+  <div>
+    <enter-task (taskEntered)="addTask($event)"></enter-task>
+  </div>
+  <hr>
+  <div>
+    <cmp-toggle [buttonList]="taskFilterList" [(selectedButton)]="selectedTaskFilter"></cmp-toggle>
+  </div>
+  <div>
+    <task *ngFor="let task of getFilteredTasks()" [title]="task.title" [done]="task.done" (taskUpdated)="onTaskUpdated(task, $event)"
+      (taskDeleted)="onTaskDeleted(task)"></task>
+  </div>
+</div>

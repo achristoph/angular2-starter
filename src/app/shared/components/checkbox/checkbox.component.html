@@ -1,0 +1,6 @@
+<label class="mdl-button mdl-js-button mdl-button--icon" (click)="onCheckedChange()">
+<div [ngSwitch]="checked">
+  <i *ngSwitchCase="true" class="material-icons" style="color:grey">check_box</i>
+  <i *ngSwitchCase="false" class="material-icons" style="color:grey">check_box_outline_blank</i>
+</div>
+</label>{{label}}

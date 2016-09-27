@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  border: dashed 1px black;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,8 @@
+<div class="task">
+  <span>
+    <cmp-checkbox label={{title}} [checked]="done" (checkedChange)="markDone($event)"></cmp-checkbox>
+  </span>
+  <label class="mdl-button mdl-js-button mdl-button--icon" (click)="deleteTask()">
+    <i class="material-icons" style="color:grey">delete</i>
+  </label>
+</div>

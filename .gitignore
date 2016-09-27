@@ -2,5 +2,5 @@
 /dist/
 /npm-debug.log
 /typings/
-.idea/
+.vscode/
 /doc/

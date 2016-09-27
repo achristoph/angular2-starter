@@ -1,0 +1,8 @@
+<span *ngFor="let button of buttonList" (click)="onButtonActivate(button)">
+<label class="mdl-button mdl-js-button mdl-button--icon">
+<div [ngSwitch]="button === selectedButton">
+  <i *ngSwitchCase="true" class="material-icons" style="color:grey">radio_button_checked</i>
+  <i *ngSwitchCase="false" class="material-icons" style="color:grey">radio_button_unchecked</i>
+</div>
+</label>{{button}}
+</span>
