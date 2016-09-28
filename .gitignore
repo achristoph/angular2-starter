@@ -3,6 +3,7 @@
 /npm-debug.log
 /typings/
 .vscode/
+.idea/
 /doc/
 /coverage/
 

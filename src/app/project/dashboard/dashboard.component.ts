@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProject } from '../../core/services/constant';
-
+import { PersonService } from '../../core/services/person.service';
 // import { Subject, BehaviorSubject, ReplaySubject } from 'rxjs/Rx';
 
 @Component({
@@ -12,11 +12,13 @@ import { IProject } from '../../core/services/constant';
 export class DashboardComponent implements OnInit {
   project: IProject;
 
-  constructor() {
-    //
+  constructor(private person: PersonService) {
+    // log.debug('Loading Dashboard');
+    person.getPeople().subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {
+
     this.project = {
       description: 'Initial release of the project',
       tasks: [

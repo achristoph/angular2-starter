@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
+import { LogDebugger } from './log-debugger';
 
 export interface IPerson {
   Id: number;
@@ -11,22 +12,22 @@ export interface IPerson {
 }
 
 @Injectable()
-export class PersonService {
+export class PersonWithLogService {
 
-  constructor(private http: Http, @Inject('peopleUrl') private peopleUrl: string) {
-    console.log(this.peopleUrl);
+  constructor(private http: Http, private log: LogDebugger, @Inject('peopleUrl') private peopleUrl: string) {
   }
 
   getPeople(): Observable<any> {
-    return this.http.get(this.peopleUrl)
+    console.log('Getting People...');
+
+    return this.http.get('people.json')
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 
   handleError(error: any): any {
     let errMsg: string = error.message || 'Server error';
-    console.log(errMsg);
-    return Observable.empty();
-    // return Observable.throw(errMsg);
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }

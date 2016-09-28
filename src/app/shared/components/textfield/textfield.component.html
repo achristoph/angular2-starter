@@ -1,4 +1,8 @@
+<form #formRef="ngForm">
 <div class="mdl-textfield mdl-js-textfield">
-  <input type="text" id="new_task_field" class="mdl-textfield__input" (keyup)="onKeyUp($event.target.value)">
+  <input type="text" id="new_task_field" name="val" class="mdl-textfield__input" (keyup)="onKeyUp($event.target.value)" [(ngModel)]="val" #inputRef="ngModel" required >
   <label class="mdl-textfield__label" for="new_task_field">{{label}}</label>
 </div>
+</form>
+{{formRef.value | json}}
+{{formRef.valid | json}}
