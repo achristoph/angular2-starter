@@ -26,7 +26,7 @@ export class EnterTaskComponent {
     }
   }
 
-  inputChange(event: any){
+  inputChange(event: any) {
     console.log(event);
   }
 }
