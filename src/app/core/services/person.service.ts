@@ -13,11 +13,11 @@ export interface IPerson {
 @Injectable()
 export class PersonService {
 
-  constructor(private _http: Http) {
+  constructor(private http: Http) {
   }
 
   getPeople(): Observable<any> {
-    return this._http.get('app/people')
+    return this.http.get('app/people')
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }

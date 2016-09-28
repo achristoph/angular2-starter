@@ -8,6 +8,6 @@ import { TextFieldComponent } from './components/textfield/textfield.component';
 @NgModule({
   declarations: [CheckboxComponent, ToggleComponent, TextFieldComponent],
   exports: [CommonModule, FormsModule, CheckboxComponent, ToggleComponent, TextFieldComponent],
-  imports: [CommonModule], //the components need common directives
+  imports: [CommonModule], // the components need common directives
 })
 export class SharedModule { }

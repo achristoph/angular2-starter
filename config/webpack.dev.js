@@ -14,12 +14,12 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.ts$/,
-    //     loader: "tslint"
-    //   }
-    // ]
+    preLoaders: [
+      {
+        test: /\.ts$/,
+        loader: "tslint"
+      }
+    ]
   },
 
   plugins: [
