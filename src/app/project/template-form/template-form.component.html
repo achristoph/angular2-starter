@@ -1,0 +1,45 @@
+<form #form="ngForm" (ngSubmit)="logForm(form.value)">
+  <ul class="flex-outer">
+    <fieldset ngModelGroup="name">
+      <li>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input type="text" id="txt" name="firstname" class="mdl-textfield__input" ngModel required>
+          <label class="mdl-textfield__label" for="txt">First Name</label>
+        </div>
+      </li>
+      <li>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input type="text" id="txt" name="last_name" class="mdl-textfield__input" ngModel required>
+          <label class="mdl-textfield__label" for="txt">Last Name</label>
+        </div>
+      </li>
+    </fieldset>
+
+    <fieldset ngModelGroup="address">
+      <li>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input type="text" id="txt" name="street" class="mdl-textfield__input" ngModel required>
+          <label class="mdl-textfield__label" for="txt">Street</label>
+        </div>
+      </li>
+
+      <li>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input type="text" id="txt" name="zip" class="mdl-textfield__input" ngModel required>
+          <label class="mdl-textfield__label" for="txt">Zip</label>
+        </div>
+      </li>
+
+      <li>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input type="text" id="txt" name="city" class="mdl-textfield__input" ngModel required>
+          <label class="mdl-textfield__label" for="txt">City</label>
+        </div>
+      </li>
+    </fieldset>
+    <li>
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised" [disabled]="!form.valid">Submit</button>
+    </li>
+  </ul>
+</form>
+

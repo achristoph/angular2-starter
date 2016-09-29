@@ -1,4 +1,2 @@
-
-<cmp-textfield  label="Enter new task title..." (keydown)="onKeyDown($event)" #titleInput [(val)]="title"></cmp-textfield>
+<cmp-textfield  label="Enter new task title..." (keydown)="onKeyDown($event)" #titleInput ></cmp-textfield>
 <button class="mdl-button mdl-js-button mdl-button--raised" (click)="enterTask(titleInput)">Add Task</button>
-

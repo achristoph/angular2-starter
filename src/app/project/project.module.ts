@@ -6,9 +6,11 @@ import { TaskComponent } from './task/task.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectComponent } from './project/project.component';
 import { SharedModule } from '../shared/shared.module';
+import { TemplateFormComponent } from '../project/template-form/template-form.component';
 
 @NgModule({
-  declarations: [DashboardComponent, EnterTaskComponent, TaskComponent, TaskListComponent, ProjectComponent],
+  declarations: [DashboardComponent, EnterTaskComponent, TaskComponent,
+  TaskListComponent, ProjectComponent, TemplateFormComponent],
   exports: [DashboardComponent, EnterTaskComponent, TaskComponent, TaskListComponent, ProjectComponent],
   imports: [SharedModule],
   providers: [],

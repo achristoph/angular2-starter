@@ -20,7 +20,7 @@ import { HttpModule } from '@angular/http';
     {
       provide: 'peopleUrl',
       useValue: 'people.json',
-    }
+    },
   ],
 })
 export class CoreModule {

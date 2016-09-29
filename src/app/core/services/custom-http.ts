@@ -10,7 +10,6 @@ export class CustomHttp extends Http {
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     console.log('Requesting from CustomHTTP......');
-    debugger;
     return super.request(url, options).catch((err, caught) => {
       if (err.status === 401
         // && !_.endsWith(err.url, 'api/auth/login')
