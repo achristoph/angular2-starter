@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonService } from './services/person.service';
 import { PersonWithLogService } from './services/person-with-log.service';
+import { QuestionService } from './services/question.service';
 import { LogDebugger } from './services/log-debugger';
 import { Constant } from './services/constant';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,6 +22,7 @@ import { HttpModule } from '@angular/http';
       provide: 'peopleUrl',
       useValue: 'people.json',
     },
+    QuestionService,
   ],
 })
 export class CoreModule {

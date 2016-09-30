@@ -1,11 +1,16 @@
 <div>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div *ngFor="let question of questions" class="form-row">
-      <df-question [question]="question" [form]="form"></df-question>
-    </div>
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
-    </div>
+    <ul class="flex-outer">
+      <div *ngFor="let question of questions" class="form-row">
+        <li>
+          <df-question [question]="question" [form]="form"></df-question>
+        </li>
+      </div>
+      <li><hr></li>
+      <li>
+        <button class="mdl-button mdl-js-button mdl-button--raised" type="submit" [disabled]="!form.valid">Save</button>
+      </li>
+    </ul>
   </form>
   <div *ngIf="payLoad" class="form-row">
     <strong>Saved the following values</strong><br>{{payLoad}}

@@ -4,6 +4,7 @@ import { QuestionBase }     from '../../core/services/question-base';
 
 @Component({
   selector: 'df-question',
+  styleUrls: ['dynamic-form-question.component.css'],
   templateUrl: 'dynamic-form-question.component.html',
 })
 export class DynamicFormQuestionComponent {
