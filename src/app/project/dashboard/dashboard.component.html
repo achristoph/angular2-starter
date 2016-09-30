@@ -1,6 +1,22 @@
 <project [title]="project.title" [description]="project.description" [tasks]="project.tasks" (projectUpdated)="updateProject($event)">
 </project>
-
-<dynamic-form [questions]="questions"></dynamic-form>
-
-<template-form></template-form>
+<hr>
+<div class="mdl-card mdl-shadow--2dp">
+  <div class="header">
+    <h5>Dynamic Form</h5>
+  </div>
+  <div class="mdl-card__actions mdl-card--border"></div>
+  <div class="mdl-card__supporting-text content">
+    <dynamic-form [questions]="questions"></dynamic-form>
+  </div>
+</div>
+<hr>
+<div class="mdl-card mdl-shadow--2dp">
+  <div class="header">
+    <h5>Template Form</h5>
+  </div>
+  <div class="mdl-card__actions mdl-card--border"></div>
+  <div class="mdl-card__supporting-text content">
+    <template-form></template-form>
+  </div>
+</div>

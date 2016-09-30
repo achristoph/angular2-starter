@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { PersonService } from './services/person.service';
 import { PersonWithLogService } from './services/person-with-log.service';
 import { QuestionService } from './services/question.service';
+import { WikipediaService } from './services/wikipedia.service';
 import { LogDebugger } from './services/log-debugger';
 import { Constant } from './services/constant';
 import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 @NgModule({
   declarations: [HeaderComponent, DrawerComponent],
   exports: [HeaderComponent, DrawerComponent, HttpModule],
-  imports: [CommonModule],
-  providers: [Constant, HttpModule,
+  imports: [CommonModule, JsonpModule],
+  providers: [Constant,
     { provide: PersonService, useClass: PersonWithLogService},
     {
       provide: LogDebugger, useFactory: () =>  new LogDebugger(true),
@@ -23,6 +24,7 @@ import { HttpModule } from '@angular/http';
       useValue: 'people.json',
     },
     QuestionService,
+    WikipediaService,
   ],
 })
 export class CoreModule {

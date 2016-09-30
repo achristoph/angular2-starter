@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ViewEncapsulation} from '@angular/core';
+import { Component } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
+import { WikipediaService } from '../../services/wikipedia.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -8,13 +10,20 @@ import {ViewEncapsulation} from '@angular/core';
   template: require('./header.component.html'),
 })
 
-export class HeaderComponent implements OnInit {
-  constructor() {
-    //
+export class HeaderComponent {
+  items: string[];
+  term$ = new Subject<string>();
+
+  constructor(private service: WikipediaService) {
+    this.term$.subscribe(term => this.search(term));
   }
 
-  ngOnInit(): void {
-    //
+  search(term: string) {
+    this.service.search(term)
+      .subscribe(results => {
+        this.items = results;
+        console.log(results);
+      });
   }
 
 }
