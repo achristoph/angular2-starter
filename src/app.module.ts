@@ -13,7 +13,6 @@ import { routing, appRoutingProviders } from './app.routing';
   declarations: [AppComponent],
   imports: [BrowserModule, CoreModule, ProjectModule, routing],
   providers: [
-    // { provide: Http, useFactory: CustomHttp, deps: [XHRBackend] },
     {
       deps: [XHRBackend, RequestOptions],
       provide: Http, useFactory:

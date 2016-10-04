@@ -1,0 +1,9 @@
+#wiki-result	{
+  position:fixed;
+  top:60px;
+  right:1%;
+  padding: 10px;
+  background: #fffea1;
+  border: 1px solid #fc0;
+  color: black;
+}

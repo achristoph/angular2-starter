@@ -9,11 +9,12 @@ import { Constant } from './services/constant';
 import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, DrawerComponent],
   exports: [HeaderComponent, DrawerComponent, HttpModule],
-  imports: [CommonModule, JsonpModule],
+  imports: [CommonModule, JsonpModule, RouterModule],
   providers: [Constant,
     { provide: PersonService, useClass: PersonWithLogService},
     {

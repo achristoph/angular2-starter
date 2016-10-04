@@ -13,17 +13,26 @@ import { Subject } from 'rxjs/Subject';
 export class HeaderComponent {
   items: string[];
   term$ = new Subject<string>();
+  toast: any;
 
   constructor(private service: WikipediaService) {
-    this.term$.subscribe(term => this.search(term));
-  }
-
-  search(term: string) {
-    this.service.search(term)
-      .subscribe(results => {
+    this.service.search(this.term$)
+      .subscribe((results: any) => {
         this.items = results;
         console.log(results);
       });
   }
 
+  showToast(toast: any) {
+    this.toast = toast;
+    let data = {
+      message: 'Search Wikipedia',
+      timeout: 3000,
+    };
+    toast.MaterialSnackbar.showSnackbar(data);
+  }
+
+  resetResultDisplay() {
+    this.items = undefined;
+  }
 }

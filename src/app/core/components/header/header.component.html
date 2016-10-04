@@ -2,15 +2,13 @@
   <span class="mdl-layout-title">Projects</span>
   <!-- Add spacer, to align navigation to the right -->
   <div class="mdl-layout-spacer"></div>
-  <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href="">Components</a>
-  </nav>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
     <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
       <i class="material-icons">search</i>
     </label>
     <div class="mdl-textfield__expandable-holder">
-      <input class="mdl-textfield__input" type="text" id="search" (input)="term$.next($event.target.value)">
+      <input class="mdl-textfield__input" type="text" id="search" (input)="term$.next($event.target.value)" (click)="showToast(toast)"
+        (blur)="resetResultDisplay()">
       <label class="mdl-textfield__label" for="search">Enter your query...</label>
     </div>
   </div>
@@ -22,3 +20,15 @@
     <li class="mdl-menu__item">Contact</li>
   </ul>
 </div>
+<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a class="mdl-layout__tab is-active" routerLink="">Home</a>
+      <a class="mdl-layout__tab" routerLink="dynamic-form">Dynamic Form</a>
+    </div>
+<div id="toast" class="mdl-js-snackbar mdl-snackbar" #toast>
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<div id="wiki-result" *ngIf="items">
+  {{items}}
+</div>
+
