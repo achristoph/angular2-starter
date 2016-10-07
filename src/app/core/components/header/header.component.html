@@ -21,9 +21,10 @@
   </ul>
 </div>
 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      <a class="mdl-layout__tab is-active" routerLink="">Home</a>
-      <a class="mdl-layout__tab" routerLink="dynamic-form">Dynamic Form</a>
-    </div>
+  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
+  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="dynamic-form">Dynamic Form</a>
+  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="template-form/1">Template Form</a>
+</div>
 <div id="toast" class="mdl-js-snackbar mdl-snackbar" #toast>
   <div class="mdl-snackbar__text"></div>
   <button class="mdl-snackbar__action" type="button"></button>
@@ -31,4 +32,3 @@
 <div id="wiki-result" *ngIf="items">
   {{items}}
 </div>
-

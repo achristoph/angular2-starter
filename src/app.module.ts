@@ -6,6 +6,8 @@ import { ProjectModule } from './app/project/project.module';
 import { CustomHttp } from './app/core/services/custom-http';
 import { Http, XHRBackend, RequestOptions } from '@angular/http';
 import './public/css/styles.css';
+import 'material-design-lite/material.min';
+
 import { routing, appRoutingProviders } from './app.routing';
 
 @NgModule({

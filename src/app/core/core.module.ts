@@ -10,15 +10,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { HighlightDirective } from './directives/highlight.directive';
+import { MDL } from './directives/mdl.directive';
 
 @NgModule({
-  declarations: [HeaderComponent, DrawerComponent],
-  exports: [HeaderComponent, DrawerComponent, HttpModule],
+  declarations: [HeaderComponent, DrawerComponent, HighlightDirective, MDL],
+  exports: [HeaderComponent, DrawerComponent, HttpModule, HighlightDirective, MDL],
   imports: [CommonModule, JsonpModule, RouterModule],
   providers: [Constant,
-    { provide: PersonService, useClass: PersonWithLogService},
+    { provide: PersonService, useClass: PersonWithLogService },
     {
-      provide: LogDebugger, useFactory: () =>  new LogDebugger(true),
+      provide: LogDebugger, useFactory: () => new LogDebugger(true),
     },
     {
       provide: 'peopleUrl',
