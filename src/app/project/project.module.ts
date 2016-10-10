@@ -11,6 +11,7 @@ import { TemplateFormContainerComponent } from '../project/template-form-contain
 import { DynamicFormComponent } from '../project/dynamic-form/dynamic-form.component';
 import { DynamicFormContainerComponent } from '../project/dynamic-form-container/dynamic-form-container.component';
 import { DynamicFormQuestionComponent } from '../project/dynamic-form-question/dynamic-form-question.component';
+import { CounterComponent } from '../project/counter/counter.component';
 import { RouterModule } from '@angular/router';
 
 const routes = [
@@ -22,7 +23,7 @@ const routes = [
 @NgModule({
   declarations: [DashboardComponent, EnterTaskComponent, TaskComponent,
     TaskListComponent, ProjectComponent, TemplateFormComponent, DynamicFormComponent,
-    DynamicFormQuestionComponent, DynamicFormContainerComponent, TemplateFormContainerComponent],
+    DynamicFormQuestionComponent, DynamicFormContainerComponent, TemplateFormContainerComponent, CounterComponent],
   imports: [SharedModule, RouterModule.forChild(routes)],
 })
 export class ProjectModule { }
