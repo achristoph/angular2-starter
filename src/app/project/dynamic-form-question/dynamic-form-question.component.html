@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+  <!--<label [attr.for]="question.key">{{question.label}}</label>-->
+  <div [ngSwitch]="question.controlType">
+    <div *ngSwitchCase="'textbox'" class="mdl-textfield mdl-js-textfield">
+      <input [formControlName]="question.key" [id]="question.key" [type]="question.type" class="mdl-textfield__input" [attr.required]="question.required ? true : null" >
+      <label class="mdl-textfield__label" [attr.for]="question.key">{{question.label}}</label>
+    </div>
+    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+  </div>
+  <span class="errorMessage" *ngIf="!isValid">{{question.label}} is required</span>
+</div>

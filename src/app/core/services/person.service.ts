@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 export interface IPerson {
   Id: number;
@@ -13,18 +13,20 @@ export interface IPerson {
 @Injectable()
 export class PersonService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, @Inject('peopleUrl') private peopleUrl: string) {
+    console.log(this.peopleUrl);
   }
 
   getPeople(): Observable<any> {
-    return this.http.get('app/people')
+    return this.http.get(this.peopleUrl)
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 
   handleError(error: any): any {
     let errMsg: string = error.message || 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
+    console.log(errMsg);
+    return Observable.empty();
+    // return Observable.throw(errMsg);
   }
 }

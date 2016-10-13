@@ -10,17 +10,11 @@ import {
 })
 export class TextFieldComponent {
   @Input() label: string;
-  @Input() value: string = '';
-  @Output() valueChange: EventEmitter<{}> = new EventEmitter();
+  @Input() val: string = '';
+  @Output() valChange: EventEmitter<{}> = new EventEmitter();
 
   onKeyUp(value: string): void {
-    this.value = value;
-    this.valueChange.emit(value);
+    this.val = value;
+    this.valChange.emit(value);
   }
-
-  // This function will trigger the checked event emitter
-  // onCheckedChange(): void {
-  //   this.checked = !this.checked;
-  //   this.checkedChange.emit(this.checked);
-  // }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProject } from '../../core/services/constant';
-
-// import { Subject, BehaviorSubject, ReplaySubject } from 'rxjs/Rx';
+import { PersonService } from '../../core/services/person.service';
 
 @Component({
   selector: 'dashboard',
@@ -12,8 +11,8 @@ import { IProject } from '../../core/services/constant';
 export class DashboardComponent implements OnInit {
   project: IProject;
 
-  constructor() {
-    //
+  constructor(private person: PersonService) {
+    person.getPeople().subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {
@@ -38,26 +37,3 @@ export class DashboardComponent implements OnInit {
     console.log(this.project);
   }
 }
-
-// var subject = new ReplaySubject(1 /* buffer size */);
-
-// subject.next('a');
-// subject.next('b');
-// subject.next('c');
-
-// var subscription = subject.subscribe(
-//     function (x) {
-//         console.log('Next: ' + x.toString());
-//     },
-//     function (err) {
-//         console.log('Error: ' + err);
-//     },
-//     function () {
-//         console.log('Completed');
-//     });
-
-// => Next: b
-// => Next: c
-
-// subject.next('d');
-// => Next: d

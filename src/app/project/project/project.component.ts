@@ -14,7 +14,7 @@ export class ProjectComponent implements OnInit {
   @Output() projectUpdated: EventEmitter<{}> = new EventEmitter();
 
   ngOnInit(): void {
-    console.log(this.tasks);
+    //
   }
 
   // This function emit an event if any of the project details have been changes within the component

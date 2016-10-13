@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ViewEncapsulation} from '@angular/core';
+import { Component } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
+import { WikipediaService } from '../../services/wikipedia.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -8,13 +10,29 @@ import {ViewEncapsulation} from '@angular/core';
   template: require('./header.component.html'),
 })
 
-export class HeaderComponent implements OnInit {
-  constructor() {
-    //
+export class HeaderComponent {
+  items: string[];
+  term$ = new Subject<string>();
+  toast: any;
+
+  constructor(private service: WikipediaService) {
+    this.service.search(this.term$)
+      .subscribe((results: any) => {
+        this.items = results;
+        console.log(results);
+      });
   }
 
-  ngOnInit(): void {
-    //
+  showToast(toast: any) {
+    this.toast = toast;
+    let data = {
+      message: 'Search Wikipedia',
+      timeout: 3000,
+    };
+    toast.MaterialSnackbar.showSnackbar(data);
   }
 
+  resetResultDisplay() {
+    this.items = undefined;
+  }
 }
