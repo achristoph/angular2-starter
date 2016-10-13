@@ -1,34 +1,35 @@
 <div class="mdl-layout__header-row">
-  <span class="mdl-layout-title">Projects</span>
-  <!-- Add spacer, to align navigation to the right -->
-  <div class="mdl-layout-spacer"></div>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+	<span class="mdl-layout-title">Projects</span>
+	<!-- Add spacer, to align navigation to the right -->
+	<div class="mdl-layout-spacer"></div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+		<label class="mdl-button mdl-js-button mdl-button--icon" for="search">
       <i class="material-icons">search</i>
     </label>
-    <div class="mdl-textfield__expandable-holder">
-      <input class="mdl-textfield__input" type="text" id="search" (input)="term$.next($event.target.value)" (click)="showToast(toast)"
-        (blur)="resetResultDisplay()">
-      <label class="mdl-textfield__label" for="search">Enter your query...</label>
-    </div>
-  </div>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+		<div class="mdl-textfield__expandable-holder">
+			<input class="mdl-textfield__input" type="text" id="search" (input)="term$.next($event.target.value)" (click)="showToast(toast)"
+				(blur)="resetResultDisplay()">
+			<label class="mdl-textfield__label" for="search">Enter your query...</label>
+		</div>
+	</div>
+	<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
 	  <i class="material-icons">more_vert</i>
   </button>
-  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-    <li class="mdl-menu__item">About</li>
-    <li class="mdl-menu__item">Contact</li>
-  </ul>
+	<ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+		<li class="mdl-menu__item">About</li>
+		<li class="mdl-menu__item">Contact</li>
+	</ul>
 </div>
 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
-  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="dynamic-form">Dynamic Form</a>
-  <a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="template-form/1">Template Form</a>
+	<a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
+	<a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="dynamic-form">Dynamic Form</a>
+	<a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="template-form/1">Template Form</a>
+	<a class="mdl-layout__tab" routerLinkActive="is-active" routerLink="counter">Counter</a>
 </div>
 <div id="toast" class="mdl-js-snackbar mdl-snackbar" #toast>
-  <div class="mdl-snackbar__text"></div>
-  <button class="mdl-snackbar__action" type="button"></button>
+	<div class="mdl-snackbar__text"></div>
+	<button class="mdl-snackbar__action" type="button"></button>
 </div>
 <div id="wiki-result" *ngIf="items">
-  {{items}}
+	{{items}}
 </div>

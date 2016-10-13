@@ -10,9 +10,9 @@ interface IAppState {
 @Component({
   selector: 'counter',
   template: `
-        <button (click)="increment()">Increment</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised" (click)="increment()">Increment</button>
         <div>Current Count: {{ counter | async }}</div>
-        <button (click)="decrement()">Decrement</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised" (click)="decrement()">Decrement</button>
     `,
 })
 export class CounterComponent {
