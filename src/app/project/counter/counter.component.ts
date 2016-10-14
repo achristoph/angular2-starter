@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { INCREMENT, DECREMENT, RESET } from '../reducers/counter';
+import { INCREMENT, DECREMENT, RESET } from '../reducers/counter.reducer';
 import { Observable } from 'rxjs';
 
 interface IAppState {

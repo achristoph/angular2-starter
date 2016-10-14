@@ -4,7 +4,7 @@
   </div>
   <hr>
   <div>
-    <cmp-toggle [buttonList]="taskFilterList" [(selectedButton)]="selectedTaskFilter"></cmp-toggle>
+    <cmp-toggle [buttonList]="taskFilterList" [selectedButton]="selectedTaskFilter" (selectedButtonChange)="updateFilter($event)"></cmp-toggle>
   </div>
   <div>
     <task *ngFor="let task of getFilteredTasks()" [title]="task.title" [done]="task.done" (taskUpdated)="onTaskUpdated(task, $event)"

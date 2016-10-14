@@ -11,7 +11,6 @@ export class EnterTaskComponent {
 
   // This function will fire the taskEntered event emitter and reset the task title input field
   enterTask(titleInput: any): void {
-    console.log(titleInput);
     this.taskEntered.emit(titleInput.val);
     titleInput.val = '';
     this.title = '';
