@@ -1,12 +1,18 @@
 {
   "extends": "tslint:latest",
-   "rulesDirectory": [
+  "rulesDirectory": [
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
   "rules": {
-    "no-console": [false],
+    "no-console": [
+      false
+    ],
     "ordered-imports": false,
     "member-access": false,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
     "quotemark": [
       true,
       "single",

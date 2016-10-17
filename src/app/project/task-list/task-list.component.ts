@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { SHOW_ALL, SHOW_DONE, SHOW_OPEN } from '../actions';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list',
@@ -16,8 +16,8 @@ export class TaskListComponent {
   filter: any;
 
   constructor(private store: Store<any>) {
-    this.taskFilterList = ['all', 'open', 'done'];
-    this.selectedTaskFilter = 'all'; // to initialize the filter first time only
+    this.taskFilterList = [SHOW_ALL, SHOW_DONE, SHOW_OPEN];
+    this.selectedTaskFilter = SHOW_ALL; // to initialize the filter first time only
     store.select('taskFilter').subscribe(tf => {
       this.filter = tf;
     });
@@ -38,7 +38,9 @@ export class TaskListComponent {
   }
 
   updateFilter(filter: string) {
-    this.store.dispatch({ type: filter });
+    this.store.dispatch(
+      { type: filter }
+    );
   }
 
   // We use the reference of the old task to updated one specific item within the task list.
@@ -57,6 +59,8 @@ export class TaskListComponent {
 
   // Function to add a new task
   addTask(title: string): void {
+    let action: any = { payload: { title } };
+    this.store.dispatch(action);
     const tasks: any[] = this.tasks.slice();
     tasks.splice(this.tasks.length, 0, {
       title,

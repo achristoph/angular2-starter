@@ -12,13 +12,28 @@ export class Constant {
   }
 }
 
-export interface IProject {
+export interface Project {
   title: string;
   description: string;
   tasks: any[];
 }
 
-export interface ITask {
+export interface Task {
   title: string;
   done: boolean;
+}
+
+export interface Action {
+  type: string;
+  payload?: any;
+}
+
+export interface AppState {
+  counter: number;
+  tasks: Task[];
+  taskFilter: any;
+}
+
+export interface Reducer<T> {
+  (state: T, action: Action): T;
 }

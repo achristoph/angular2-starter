@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'enter-task',
@@ -11,8 +11,8 @@ export class EnterTaskComponent {
 
   // This function will fire the taskEntered event emitter and reset the task title input field
   enterTask(titleInput: any): void {
-    this.taskEntered.emit(titleInput.val);
-    titleInput.val = '';
+    this.taskEntered.emit(titleInput.value);
+    titleInput.value = '';
     this.title = '';
   }
 

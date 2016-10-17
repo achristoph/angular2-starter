@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import { LogDebugger } from './log-debugger';
 
-export interface IPerson {
+export interface Person {
   Id: number;
   ParentTeam: string;
   Name: string;

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { IProject } from '../../core/services/constant';
+import { Component } from '@angular/core';
+import { Task, Project } from '../../core/services/constant';
 import { PersonService } from '../../core/services/person.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'dashboard',
@@ -8,28 +9,19 @@ import { PersonService } from '../../core/services/person.service';
   templateUrl: './dashboard.component.html',
 })
 
-export class DashboardComponent implements OnInit {
-  project: IProject;
+export class DashboardComponent {
+  project: Project;
 
-  constructor(private person: PersonService) {
+  constructor(private person: PersonService, private store: Store<any>) {
     person.getPeople().subscribe((data) => console.log(data));
-  }
-
-  ngOnInit(): void {
     this.project = {
       description: 'Initial release of the project',
-      tasks: [
-        {
-          done: true,
-          title: 'Task 1',
-        },
-        {
-          done: false,
-          title: 'Task 2',
-        },
-      ],
+      tasks: [],
       title: 'Project Alpha',
     };
+    store.select('task').subscribe((tasks: Task[]) => {
+      this.project.tasks = tasks;
+    });
   }
 
   updateProject(projectData: any): void {

@@ -1,15 +1,20 @@
-
 import {
   ADD_TASK,
   DELETE_TASK,
 } from '../actions';
 
-export const taskFilterReducer = (state = (task: any) => task, action: any) => {
+export const taskReducer = (state: any = [], action: any) => {
   switch (action.type) {
     case ADD_TASK:
-      return (task: any) => task;
+      console.log('ADD TASK');
+      return [...state,
+      Object.assign({}, {
+        done: false,
+        title: action.payload.title,
+      }),
+      ];
     case DELETE_TASK:
-      return (task: any) => task.done;
+      return state;
     default:
       return state;
   }

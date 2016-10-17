@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { INCREMENT, DECREMENT, RESET } from '../reducers/counter.reducer';
 import { Observable } from 'rxjs';
 
-interface IAppState {
+interface AppState {
   counter: number;
 }
 
@@ -18,7 +18,7 @@ interface IAppState {
 export class CounterComponent {
   counter: Observable<{}>;
 
-  constructor(public store: Store<IAppState>) {
+  constructor(public store: Store<AppState>) {
     this.counter = store.select('counter');
   }
 
