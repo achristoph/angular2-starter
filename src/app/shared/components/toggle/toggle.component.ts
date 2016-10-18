@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class ToggleComponent implements OnInit {
   // A list of objects that will be used as button values.
-  @Input() buttonList: string;
+  @Input() buttonList: string[];
   // Input and state of which button is selected needs to refer to
   // an object within buttonList
   @Input() selectedButton: string;

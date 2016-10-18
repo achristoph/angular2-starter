@@ -4,14 +4,14 @@ import {
   SHOW_DONE,
 } from '../actions';
 
-export const taskFilterReducer = (state = (task: any) => task, action: any) => {
+export const taskFilterReducer = (state: any = { fn: (task: any) => task, value: SHOW_ALL }, action: any) => {
   switch (action.type) {
     case SHOW_ALL:
-      return (task: any) => task;
+      return { fn: (task: any) => task, value: action.type };
     case SHOW_OPEN:
-      return (task: any) => !task.done;
+      return { fn: (task: any) => !task.done, value: action.type };
     case SHOW_DONE:
-      return (task: any) => task.done;
+      return { fn: (task: any) => task.done, value: action.type };
     default:
       return state;
   }

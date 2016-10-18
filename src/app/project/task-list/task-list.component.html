@@ -4,10 +4,10 @@
   </div>
   <hr>
   <div>
-    <cmp-toggle [buttonList]="taskFilterList" [selectedButton]="selectedTaskFilter" (selectedButtonChange)="updateFilter($event)"></cmp-toggle>
+    <cmp-toggle [buttonList]="taskFilterList" (selectedButtonChange)="updateFilter($event)"></cmp-toggle>
   </div>
   <div>
-    <task *ngFor="let task of getFilteredTasks() | async" [title]="task.title" [done]="task.done" (taskUpdated)="updateTask(task, $event)"
+    <task *ngFor="let task of tasks" [title]="task.title" [done]="task.done" (taskUpdated)="updateTask(task, $event)"
       (taskDeleted)="deleteTask(task)"></task>
   </div>
 </div>

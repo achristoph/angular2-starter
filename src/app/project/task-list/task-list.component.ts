@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { Store } from '@ngrx/store';
 import { SHOW_ALL, SHOW_DONE, SHOW_OPEN, ADD_TASK, DELETE_TASK, UPDATE_TASK } from '../actions';
 import { Task, Action, AppState } from '../../core/services/constant';
-import { Observable } from 'rxjs';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,24 +10,22 @@ import { Observable } from 'rxjs';
   template: require('./task-list.component.html'),
 })
 export class TaskListComponent {
-  @Input() tasks: Observable<Task[]>;
+  @Input() tasks: Task[];
   // Event emitter for emitting an event once the task list has been changed
   @Output() tasksUpdated: EventEmitter<{}> = new EventEmitter();
   taskFilterList: string[];
-  selectedTaskFilter: string;
   filter: any;
 
   constructor(private store: Store<AppState>) {
     this.taskFilterList = [SHOW_ALL, SHOW_DONE, SHOW_OPEN];
-    this.selectedTaskFilter = SHOW_ALL; // to initialize the filter first time only
-    store.select('taskFilter').subscribe(tf => {
-      this.filter = tf;
-    });
+    // store.select('taskFilter').subscribe((tf: any) => {
+    //   this.filter = tf.fn;
+    // });
   }
 
   // Get a filtered list of the task list that depends on our selected filter
-  getFilteredTasks(): Observable<Task[]> {
-    return this.tasks.map((t) => t.filter(this.filter));
+  // getFilteredTasks(): any {
+    // return this.tasks.map((tasks: any) => tasks.filter(this.filter));
     // return this.tasks.filter((task: any) => {
     //   if (this.selectedTaskFilter === 'all') {
     //     return true;
@@ -38,7 +35,7 @@ export class TaskListComponent {
     //     return task.done;
     //   }
     // });
-  }
+  // }
 
   updateFilter(filter: string) {
     this.store.dispatch(

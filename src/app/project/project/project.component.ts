@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Task } from '../../core/services/constant';
+import { Store } from '@ngrx/store';
+import { Task, AppState } from '../../core/services/constant';
 
 // This component represents a project and displays project details
 @Component({
@@ -9,21 +10,26 @@ import { Task } from '../../core/services/constant';
   styleUrls: ['./project.component.css'],
   templateUrl: './project.component.html',
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
   @Input() title: string;
   @Input() description: string;
-  @Input() tasks: any[];
+  @Input() tasks: Observable<Task[]>;
   @Output() projectUpdated: EventEmitter<{}> = new EventEmitter();
-  openTasks: Observable<Task>[];
-  doneTasks: Observable<Task>[];
+  model: any;
 
-  constructor() {
-    // this.openTasks = this.tasks.map(task => task.filter((t: Task) => t.done));
+  constructor(private store: Store<AppState>) {
+    this.model = Observable.combineLatest(
+      this.store.select('task'),
+      this.store.select('taskFilter'), (tasks: any, filter: any) => {
+        return {
+          done: tasks.filter((t: Task) => t.done).length,
+          open: tasks.filter((t: Task) => !t.done).length,
+          tasks: tasks.filter(filter.fn),
+          total: tasks.length,
+        };
+      });
   }
-  ngOnInit() {
-    this.openTasks = this.tasks.filter((t: Task) => !t.done);
-    console.log(this.openTasks);
-  }
+
   // This function emit an event if any of the project details have been changes within the component
   onProjectUpdated(): void {
     this.projectUpdated.emit({
@@ -34,8 +40,7 @@ export class ProjectComponent implements OnInit {
   }
 
   // This function should be called if the task list of the project was updated
-  updateTasks(tasks: Object[]): void {
-    console.log(tasks);
+  updateTasks(tasks: Observable<Task[]>): void {
     this.tasks = tasks;
     this.onProjectUpdated();
   }
