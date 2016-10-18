@@ -18,17 +18,25 @@ export class ProjectComponent {
   model: any;
 
   constructor(private store: Store<AppState>) {
+    let taskModel: any = () => {
+      return (state: any) => state
+        .map((v: any) => {
+          let tasks: any;
+          let filter: any;
+          [tasks, filter] = v;
+          return {
+            done: tasks.filter((t: Task) => t.done).length,
+            open: tasks.filter((t: Task) => !t.done).length,
+            tasks: tasks.filter(filter.fn),
+            total: tasks.length,
+          };
+        });
+    };
     this.model = Observable.combineLatest(
       this.store.select('task'),
-      this.store.select('taskFilter'), (tasks: any, filter: any) => {
-        return {
-          done: tasks.filter((t: Task) => t.done).length,
-          open: tasks.filter((t: Task) => !t.done).length,
-          tasks: tasks.filter(filter.fn),
-          total: tasks.length,
-        };
-      });
+      this.store.select('taskFilter')).let(taskModel());
   }
+
 
   // This function emit an event if any of the project details have been changes within the component
   onProjectUpdated(): void {
