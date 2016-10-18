@@ -1,13 +1,13 @@
 <div class="list">
   <div>
-    <enter-task fieldName="asdf" (taskEntered)="addTask($event)"></enter-task>
+    <enter-task (taskEntered)="addTask($event)"></enter-task>
   </div>
   <hr>
   <div>
     <cmp-toggle [buttonList]="taskFilterList" [selectedButton]="selectedTaskFilter" (selectedButtonChange)="updateFilter($event)"></cmp-toggle>
   </div>
   <div>
-    <task *ngFor="let task of getFilteredTasks()" [title]="task.title" [done]="task.done" (taskUpdated)="onTaskUpdated(task, $event)"
-      (taskDeleted)="onTaskDeleted(task)"></task>
+    <task *ngFor="let task of getFilteredTasks() | async" [title]="task.title" [done]="task.done" (taskUpdated)="updateTask(task, $event)"
+      (taskDeleted)="deleteTask(task)"></task>
   </div>
 </div>

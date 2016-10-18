@@ -1,6 +1,9 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SHOW_ALL, SHOW_DONE, SHOW_OPEN } from '../actions';
+import { SHOW_ALL, SHOW_DONE, SHOW_OPEN, ADD_TASK, DELETE_TASK, UPDATE_TASK } from '../actions';
+import { Task, Action, AppState } from '../../core/services/constant';
+import { Observable } from 'rxjs';
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list',
@@ -8,14 +11,14 @@ import { SHOW_ALL, SHOW_DONE, SHOW_OPEN } from '../actions';
   template: require('./task-list.component.html'),
 })
 export class TaskListComponent {
-  @Input() tasks: any[];
+  @Input() tasks: Observable<Task[]>;
   // Event emitter for emitting an event once the task list has been changed
   @Output() tasksUpdated: EventEmitter<{}> = new EventEmitter();
   taskFilterList: string[];
   selectedTaskFilter: string;
   filter: any;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<AppState>) {
     this.taskFilterList = [SHOW_ALL, SHOW_DONE, SHOW_OPEN];
     this.selectedTaskFilter = SHOW_ALL; // to initialize the filter first time only
     store.select('taskFilter').subscribe(tf => {
@@ -24,8 +27,8 @@ export class TaskListComponent {
   }
 
   // Get a filtered list of the task list that depends on our selected filter
-  getFilteredTasks(): Object[] {
-    return this.tasks.filter(this.filter);
+  getFilteredTasks(): Observable<Task[]> {
+    return this.tasks.map((t) => t.filter(this.filter));
     // return this.tasks.filter((task: any) => {
     //   if (this.selectedTaskFilter === 'all') {
     //     return true;
@@ -44,29 +47,32 @@ export class TaskListComponent {
   }
 
   // We use the reference of the old task to updated one specific item within the task list.
-  onTaskUpdated(task: any, taskData: any): void {
-    const tasks: any[] = this.tasks.slice();
-    tasks.splice(this.tasks.indexOf(task), 1, taskData);
-    this.tasksUpdated.emit(tasks);
+  updateTask(task: any, taskData: any): void {
+    let action: Action = { payload: { task, taskData }, type: UPDATE_TASK };
+    this.store.dispatch(action);
+    // const tasks: any[] = this.tasks.slice();
+    // tasks.splice(this.tasks.indexOf(task), 1, taskData);
+    // this.tasksUpdated.emit(tasks);
   }
 
   // Using the reference of a task, this function will remove it from the tasks list and send an update
-  onTaskDeleted(task: any): void {
-    const tasks: any[] = this.tasks.slice();
-    tasks.splice(this.tasks.indexOf(task), 1);
-    this.tasksUpdated.emit(tasks);
+  deleteTask(task: any): void {
+    let action: Action = { payload: { task }, type: DELETE_TASK };
+    this.store.dispatch(action);
+    // const tasks: any[] = this.tasks.slice();
+    // tasks.splice(this.tasks.indexOf(task), 1);
+    // this.tasksUpdated.emit(tasks);
   }
 
   // Function to add a new task
   addTask(title: string): void {
-    let action: any = { payload: { title } };
+    let action: Action = { payload: { title }, type: ADD_TASK };
     this.store.dispatch(action);
-    const tasks: any[] = this.tasks.slice();
-    tasks.splice(this.tasks.length, 0, {
-      title,
-      done: false,
-    });
-    this.tasksUpdated.emit(tasks);
+    // const tasks: Task[] = this.tasks.slice();
+    // tasks.splice(this.tasks.length, 0, {
+    //   title,
+    //   done: false,
+    // });
+    // this.tasksUpdated.emit(tasks);
   }
-
 }

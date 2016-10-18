@@ -10,11 +10,11 @@ import {
 })
 export class TextFieldComponent {
   @Input() label: string;
-  @Input() val: string = '';
-  @Output() valChange: EventEmitter<{}> = new EventEmitter();
+  @Input() value: string = '';
+  @Output() valueChange: EventEmitter<{}> = new EventEmitter();
 
   onKeyUp(value: string): void {
-    this.val = value;
-    this.valChange.emit(value);
+    this.value = value;
+    this.valueChange.emit(value);
   }
 }

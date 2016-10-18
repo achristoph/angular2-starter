@@ -13,11 +13,14 @@ import { DynamicFormContainerComponent } from './dynamic-form-container/dynamic-
 import { DynamicFormQuestionComponent } from './dynamic-form-question/dynamic-form-question.component';
 import { CounterContainerComponent } from './counter-container/counter-container.component';
 import { CounterComponent } from './counter/counter.component';
+import { TaskStatsComponent } from './task-stats/task-stats.component';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './reducers/counter.reducer';
 import { taskFilterReducer } from './reducers/task-filter.reducer';
+import { projectReducer } from './reducers/project.reducer';
 import { taskReducer } from './reducers/task.reducer';
+import { Task, Project } from '../core/services/constant';
 
 const routes = [
   { component: DynamicFormContainerComponent, path: 'dynamic-form' },
@@ -26,26 +29,41 @@ const routes = [
   { component: DashboardComponent, path: '' },
 ];
 
+let initialTasks: Task[] = [
+  {
+    done: true,
+    id: 0,
+    title: 'Task 1',
+  },
+  {
+    done: false,
+    id: 1,
+    title: 'Task 2',
+  },
+];
+
+let initialProject: Project = {
+  description: 'Initial release of the project',
+  tasks: initialTasks,
+  title: 'Project Alpha',
+};
+
 @NgModule({
   declarations: [DashboardComponent, EnterTaskComponent, TaskComponent,
     TaskListComponent, ProjectComponent, TemplateFormComponent, DynamicFormComponent,
     DynamicFormQuestionComponent, DynamicFormContainerComponent, TemplateFormContainerComponent,
-    CounterComponent, CounterContainerComponent],
+    CounterComponent, CounterContainerComponent, TaskStatsComponent],
   imports: [SharedModule, RouterModule.forChild(routes),
-    StoreModule.provideStore({ counter: counterReducer, task: taskReducer, taskFilter: taskFilterReducer },
+    StoreModule.provideStore({
+      counter: counterReducer, project: projectReducer, task: taskReducer,
+      taskFilter: taskFilterReducer,
+    },
       {
-        counter: 0, task: [
-          {
-            done: true,
-            title: 'Task 1',
-          },
-          {
-            done: false,
-            title: 'Task 2',
-          },
-        ],
-      }),
+        counter: 0,
+        project: initialProject,
+        task: initialTasks,
+      }
+    ),
   ],
-
 })
 export class ProjectModule { }

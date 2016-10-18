@@ -15,11 +15,12 @@ export class Constant {
 export interface Project {
   title: string;
   description: string;
-  tasks: any[];
+  tasks: any;
 }
 
 export interface Task {
   title: string;
+  id: number;
   done: boolean;
 }
 

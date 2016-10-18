@@ -5,6 +5,8 @@
   </div>
   <div class="mdl-card__actions mdl-card--border"></div>
   <div class="mdl-card__supporting-text content">
+    <task-stats [all]="(tasks | async)?.length" [open]="(openTasks | async)?.length" [done]="(doneTasks | async)?.length">
+    </task-stats>
     <task-list [tasks]="tasks" (tasksUpdated)="updateTasks($event)"></task-list>
   </div>
 </div>
