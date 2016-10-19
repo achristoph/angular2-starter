@@ -9,4 +9,5 @@ export class TaskStatsComponent {
   @Input() all: any;
   @Input() done: any;
   @Input() open: any;
+  @Input() percentOpen: any;
 }

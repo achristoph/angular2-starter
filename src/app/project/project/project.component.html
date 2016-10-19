@@ -5,7 +5,7 @@
   </div>
   <div class="mdl-card__actions mdl-card--border"></div>
   <div class="mdl-card__supporting-text content">
-    <task-stats [all]="(model | async)?.total" [done]="(model | async)?.done" [open]="(model | async)?.open">
+    <task-stats [all]="(model | async)?.total" [done]="(model | async)?.done" [open]="(model | async)?.open" [percentOpen]="this.percentDone | async | percent:'1.0-2'">
     </task-stats>
     <task-list [tasks]="(model | async)?.tasks" (tasksUpdated)="updateTasks($event)"></task-list>
   </div>

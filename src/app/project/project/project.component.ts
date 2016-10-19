@@ -15,15 +15,13 @@ export class ProjectComponent {
   @Input() description: string;
   @Input() tasks: Observable<Task[]>;
   @Output() projectUpdated: EventEmitter<{}> = new EventEmitter();
-  model: any;
+  model;
+  percentDone;
 
   constructor(private store: Store<AppState>) {
-    let taskModel: any = () => {
-      return (state: any) => state
-        .map((v: any) => {
-          let tasks: any;
-          let filter: any;
-          [tasks, filter] = v;
+    const taskModel = () => {
+      return (state) => state
+        .map(([tasks, filter]) => {
           return {
             done: tasks.filter((t: Task) => t.done).length,
             open: tasks.filter((t: Task) => !t.done).length,
@@ -32,11 +30,29 @@ export class ProjectComponent {
           };
         });
     };
+
+    const getTasks = () => {
+      return (state) => state
+        .map(s => s.task)
+        .distinctUntilChanged();
+    };
+
+    const percentDone = () => {
+      return (state) => state
+        .let(getTasks())
+        .map(tasks => {
+          const totalDone = tasks.filter((t: Task) => t.done).length;
+          const total = tasks.length;
+          return total > 0 ? (totalDone / total) : 0;
+        });
+    };
+
     this.model = Observable.combineLatest(
       this.store.select('task'),
       this.store.select('taskFilter')).let(taskModel());
-  }
 
+    this.percentDone = store.let(percentDone());
+  }
 
   // This function emit an event if any of the project details have been changes within the component
   onProjectUpdated(): void {
