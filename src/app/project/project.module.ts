@@ -16,7 +16,6 @@ import { CounterComponent } from './counter/counter.component';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './reducers/counter.reducer';
-import { taskFilterReducer } from './reducers/task-filter.reducer';
 
 const routes = [
   { component: DynamicFormContainerComponent, path: 'dynamic-form' },
@@ -31,7 +30,7 @@ const routes = [
     DynamicFormQuestionComponent, DynamicFormContainerComponent, TemplateFormContainerComponent,
     CounterComponent, CounterContainerComponent],
   imports: [SharedModule, RouterModule.forChild(routes),
-    StoreModule.provideStore({ counter: counterReducer, taskFilter: taskFilterReducer },
-      { counter: 0})],
+    StoreModule.provideStore({ counter: counterReducer },
+      { counter: 0 })],
 })
 export class ProjectModule { }

@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,30 +14,22 @@ export class TaskListComponent {
   selectedTaskFilter: string;
   filter: any;
 
-  constructor(private store: Store<any>) {
+  constructor() {
     this.taskFilterList = ['all', 'open', 'done'];
     this.selectedTaskFilter = 'all'; // to initialize the filter first time only
-    store.select('taskFilter').subscribe(tf => {
-      this.filter = tf;
-    });
   }
 
   // Get a filtered list of the task list that depends on our selected filter
   getFilteredTasks(): Object[] {
-    return this.tasks.filter(this.filter);
-    // return this.tasks.filter((task: any) => {
-    //   if (this.selectedTaskFilter === 'all') {
-    //     return true;
-    //   } else if (this.selectedTaskFilter === 'open') {
-    //     return !task.done;
-    //   } else {
-    //     return task.done;
-    //   }
-    // });
-  }
-
-  updateFilter(filter: string) {
-    this.store.dispatch({ type: filter });
+    return this.tasks.filter((task: any) => {
+      if (this.selectedTaskFilter === 'all') {
+        return true;
+      } else if (this.selectedTaskFilter === 'open') {
+        return !task.done;
+      } else {
+        return task.done;
+      }
+    });
   }
 
   // We use the reference of the old task to updated one specific item within the task list.
