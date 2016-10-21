@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 
 export class DashboardComponent {
   project: Project;
+  result;
 
   constructor(private person: PersonService, private store: Store<any>) {
     // person.getPeople().subscribe((data) => console.log(data));
@@ -25,6 +26,13 @@ export class DashboardComponent {
 
   updateProject(projectData: any): void {
     Object.assign(this.project, projectData);
+  }
+
+  search(v): void {
+    this.person.getCombinedData().subscribe((res) => {
+      console.log(res);
+      this.result = res;
+    });
   }
 
 }

@@ -23,6 +23,30 @@ export class PersonService {
       .catch(this.handleError);
   }
 
+  getConcatData(): Observable<any> {
+    return Observable.concat(this.getUser(), this.getAccount());
+  }
+
+  getCombinedData(): Observable<any> {
+    return Observable.forkJoin(this.getUser(), this.getAccount());
+  }
+
+  getUser(): Observable<any> {
+    return this.http.get('http://localhost:3000/user')
+      .map((res: any) => {
+        return res.json();
+      })
+      .catch(this.handleError);
+  }
+
+  getAccount(): Observable<any> {
+    return this.http.get('http://localhost:3000/account')
+      .map((res: any) => {
+        return res.json();
+      })
+      .catch(this.handleError);
+  }
+
   handleError(error: any): any {
     let errMsg: string = error.message || 'Server error';
     console.log(errMsg);

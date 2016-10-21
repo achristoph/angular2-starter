@@ -1,4 +1,9 @@
 <div id="container">
+	<div class="mdl-textfield mdl-js-textfield">
+		<input class="mdl-textfield__input" type="text" #searchInput>
+	</div>
+	<button class="mdl-button mdl-js-button mdl-button--raised" (click)="search(searchInput)">Search</button>
+  <div>{{result|json}}</div>
 	<project [title]="project.title" [description]="project.description" [tasks]="project.tasks" (projectUpdated)="updateProject($event)">
 	</project>
 </div>

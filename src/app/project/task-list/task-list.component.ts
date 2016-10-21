@@ -47,29 +47,17 @@ export class TaskListComponent {
   updateTask(task: any, taskData: any): void {
     let action: Action = { payload: { task, taskData }, type: UPDATE_TASK };
     this.store.dispatch(action);
-    // const tasks: any[] = this.tasks.slice();
-    // tasks.splice(this.tasks.indexOf(task), 1, taskData);
-    // this.tasksUpdated.emit(tasks);
   }
 
   // Using the reference of a task, this function will remove it from the tasks list and send an update
   deleteTask(task: any): void {
     let action: Action = { payload: { task }, type: DELETE_TASK };
     this.store.dispatch(action);
-    // const tasks: any[] = this.tasks.slice();
-    // tasks.splice(this.tasks.indexOf(task), 1);
-    // this.tasksUpdated.emit(tasks);
   }
 
   // Function to add a new task
   addTask(title: string): void {
     let action: Action = { payload: { title }, type: ADD_TASK };
     this.store.dispatch(action);
-    // const tasks: Task[] = this.tasks.slice();
-    // tasks.splice(this.tasks.length, 0, {
-    //   title,
-    //   done: false,
-    // });
-    // this.tasksUpdated.emit(tasks);
   }
 }

@@ -9,7 +9,6 @@ import { Subject } from 'rxjs/Subject';
   styles: [require('./header.component.css')],
   template: require('./header.component.html'),
 })
-
 export class HeaderComponent {
   items: string[];
   term$ = new Subject<string>();
@@ -19,7 +18,6 @@ export class HeaderComponent {
     this.service.search(this.term$)
       .subscribe((results: any) => {
         this.items = results;
-        console.log(results);
       });
   }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonService } from './services/person.service';
-import { PersonWithLogService } from './services/person-with-log.service';
+// import { PersonWithLogService } from './services/person-with-log.service';
 import { QuestionService } from './services/question.service';
 import { WikipediaService } from './services/wikipedia.service';
 import { LogDebugger } from './services/log-debugger';
@@ -18,7 +18,7 @@ import { MDL } from './directives/mdl.directive';
   exports: [HeaderComponent, DrawerComponent, HttpModule, HighlightDirective, MDL],
   imports: [CommonModule, JsonpModule, RouterModule],
   providers: [Constant,
-    { provide: PersonService, useClass: PersonWithLogService },
+    { provide: PersonService, useClass: PersonService },
     {
       provide: LogDebugger, useFactory: () => new LogDebugger(true),
     },
