@@ -1,4 +1,5 @@
 /node_modules/
+/src/server/node_modules/
 /dist/
 /npm-debug.log
 /typings/
@@ -6,4 +7,3 @@
 .idea/
 /doc/
 /coverage/
-.idea/
