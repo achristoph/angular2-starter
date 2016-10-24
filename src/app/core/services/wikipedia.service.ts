@@ -11,8 +11,11 @@ export class WikipediaService {
     search.set('action', 'opensearch');
     search.set('search', term);
     search.set('format', 'json');
-    return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
-      .map(response => response.json()[1]);
+    let response: Observable<string> = this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK',
+      { search }).map(res => res.json()[1]);
+    // use this to demo for a case where flatMap fails to handle out of order response
+    // if (term.length === 2) { return response.delay(2000); }
+    return response;
   }
 
   search(terms: Observable<string>, debounceMs = 400): Observable<string> {
@@ -20,6 +23,7 @@ export class WikipediaService {
       .distinctUntilChanged() // deleting a character and redo the same character will not trigger another request
       .switchMap(term => this.searchRaw(term)); // switchMap handles out of order reponses
     // - when there's a delay of previous autocomplete, that autocomplete is ignored
+    // .flatMap(term => this.searchRaw(term)); //flatMap out of order scenario
   }
 
 }
